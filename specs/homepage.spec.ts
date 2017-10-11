@@ -1,11 +1,8 @@
 import { browser, ExpectedConditions as EC, $, $$ } from 'protractor'
-import { SignUpPage } from '../page_objects/login.page'
+import { SignUpPage } from '../page_objects/signup.page'
 import { TermsAndConditionsPage } from '../page_objects/terms.conditions.page'
 import { AppPage } from '../page_objects/app.page'
 
-// Unfortunatelly had to loose types here. 
-// Extending jasmine matchers does not work well - 
-// https://medium.com/@cwmrowe/making-jasmine-and-typescript-play-nicely-c2f4bef1830a
 declare let expect:any
 
 describe('Verifying project generation ', function () {
