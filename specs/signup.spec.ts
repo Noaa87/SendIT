@@ -5,7 +5,7 @@ import { AppPage } from '../page_objects/app.page'
 
 declare let expect:any
 
-describe('Verifying project generation ', function () {
+describe('Test SendIT web-app', function () {
     beforeEach(async () => {
         await new SignUpPage().open()
     })
@@ -34,7 +34,7 @@ describe('Verifying project generation ', function () {
         await expect($('[ng-if="vm.error"]').getText()).toEqual('This password is invalid. Minimal length is 6 characters.') 
     })
 
-    xit('it should sign up with valid credentials, accept terms and logout', async function () {
+    it('it should sign up with valid credentials, accept terms and logout', async function () {
         let d = new Date()
         let n = d.getTime();
         let signUpPage = new SignUpPage()
@@ -46,21 +46,8 @@ describe('Verifying project generation ', function () {
             }
         )
         await new TermsAndConditionsPage().agreeTermsAndConditions()
-        await new AppPage().logOutTest()
+        await new AppPage().LogOut()
+        await expect(browser.getCurrentUrl()).toContain('/login/')
     })
 })
 
-
-
-    // it('Checking that created project can start and communicate with browser', async function () {
-    //     await expect($$('div').first()).toAppear('Atleast one div should appear on the page')
-    // })
-
-    // afterAll(() => {
-    //     console.warn(`
-    //         If all test is passed, and no errors in console - this means you are good to go! 
-    //         Just remove this describe block from specs/homepage.spec.ts file. And start writing your tests!
-
-    //         Please check README.md in generated project for future details`)
-    // })
-    // })
