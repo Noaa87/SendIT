@@ -43,10 +43,10 @@ describe('Test editing of user settings', function () {
     })
 
     fit('should change time format', async function () {
-        let originalFormat = $('user-time-format').getAttribute('value')
-        console.log(originalFormat)
+        // await expect($('.dropdown-toggle').getAttribute('value')).toEqual('23:07')
         // let x = new userSettings()
         // await x.editTimeFormat()
+        console.log($('.dropdown-toggle').getAttribute('value'))
         
     })
 
