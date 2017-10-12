@@ -29,7 +29,7 @@ describe('Test SendIT web-app', function () {
     })
 
     it('it should sign up with valid credentials, accept terms and logout', async function () {
-        let epochTime = new Date().getTime()
+        const epochTime = new Date().getTime().toString()
         await signUpPage.signUpAs({
             fullname: "Test Simone",
             email: `${epochTime}_test@test.com`,
