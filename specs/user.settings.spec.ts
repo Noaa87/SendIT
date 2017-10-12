@@ -4,9 +4,6 @@ export class UserSettings {
 
     private name = $('editable-field[field-value="data.fullName"] input')
     private jobTitle = $('editable-field[field-value="data.jobTitle"] input')
-    /* this means - find me element, with tag name - editable-field
-    and this element should have attribute field-value equal to data.jobTitle
-    and inside this element, find element with tag name - input*/
     private timeFormat = $('#user-time-format')
     private options = $$('ul.dropdown-menu a')
 

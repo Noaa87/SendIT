@@ -40,7 +40,7 @@ describe('Test SendIT web-app', function () {
             email: 'simonex@sharklasers.com',
             password: 'sendIT'
             })
-        await browser.wait(EC.urlContains('/app/'), 7000);
+        await browser.wait(EC.urlContains('/app/'), 7000, 'expected to be in "app" page');
     })
 
 })

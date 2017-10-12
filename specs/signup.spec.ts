@@ -37,7 +37,7 @@ describe('Test SendIT web-app', function () {
         })
         await new TermsAndConditionsPage().agreeTermsAndConditions()
         await new AppPage().LogOut()
-        await browser.wait(EC.urlContains('/login/'), 7000, 'Expecting to be on "login" page')
+        await browser.wait(EC.urlContains('/login/'), 7000, 'Expected to be on "login" page')
     })
 })
 
