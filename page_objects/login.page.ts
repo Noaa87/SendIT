@@ -11,11 +11,21 @@ export class LoginPage {
         return await browser.get(this.url)
     }
 
-    async loginAs(credentials: { email: string, password: string }) {
+    async loginAs(credentials: IUser) {
         await this.email.sendKeys(credentials.email)
         await this.password.sendKeys(credentials.password)
         await browser.wait(EC.elementToBeClickable(this.loginButton), 2000,
             'Login button must became clickable after filling all fields')
         await this.loginButton.click()
     }
+
+    async openAndLogin(credentials: IUser) {
+        await this.open()
+        await this.loginAs(credentials)
+    }
+}
+
+interface IUser {
+    email: string,
+    password: string
 }
