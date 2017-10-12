@@ -1,4 +1,5 @@
 import { Config, browser } from 'protractor'
+import matchers = require('jasmine-protractor-matchers')
 
 // Full protractor configuration file reference could be found here:
 // https://github.com/angular/protractor/blob/master/lib/config.ts
@@ -42,7 +43,6 @@ let conf: Config = {
     beforeEach(() => {
       // Adding .toAppear() and .toDisappear() into available matchers.
       // https://github.com/Xotabu4/jasmine-protractor-matchers
-      let matchers = require('jasmine-protractor-matchers')
       jasmine.addMatchers(matchers);
     });
 
