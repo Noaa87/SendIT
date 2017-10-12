@@ -9,7 +9,7 @@ describe('Test editing of user settings', function () {
     
     beforeEach(async () => {
         // new login for each test case
-        new LoginPage().openAndLogin({
+        await new LoginPage().openAndLogin({
             email: 'simonex@sharklasers.com',
             password: 'sendIT'
         })
