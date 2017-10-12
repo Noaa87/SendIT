@@ -8,6 +8,7 @@ export class UserSettings {
     and this element should have attribute field-value equal to data.jobTitle
     and inside this element, find element with tag name - input*/
     private timeFormat = $('#user-time-format')
+    private options = $$('ul.dropdown-menu a')
 
     async editJobTitle(newJobTitle: string) {
         await this.jobTitle.clear()
@@ -21,14 +22,28 @@ export class UserSettings {
         await this.jobTitle.click()
     }
 
-    async editTimeFormat() {
-        // await this.timeFormat.$('span.value').getText()
+
+    async selectTime(format: string) {
+        await this.options.map(async (option)=> {
+            let text = await option.getText()
+            if(text.includes(format)) {
+                 await option.click()
+            }
+        })
+    }
+
+    async checkTimeFormat () {
+        return await this.timeFormat.$('span.value').getText()
+    }
+
+    async editTimeFormat () {
         await this.timeFormat.click()
+        let options = $$('ul.dropdown-menu a')
         let currentTime = await this.timeFormat.$('span.value').getText()
         if (currentTime.includes('AM') || currentTime.includes('PM')) {
-            console.log('ciao')
+            await this.selectTime('(24h)')
         } else {
-            console.log('cxxxxxxxxxxxx')
+            await this.selectTime('(12h)')
         }
     }
 

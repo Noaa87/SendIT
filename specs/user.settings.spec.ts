@@ -24,9 +24,9 @@ describe('Test editing of user settings', function () {
     it('should change the name', async function () {
         let d = new Date()
         let n = d.getTime().toString()
-        let x = new UserSettings()
-        await x.editName(n)
-        await browser.sleep(500)
+        let userSettingInstance = new UserSettings()
+        await userSettingInstance.editName(n)
+        await browser.sleep(300)
         await browser.refresh()
         await expect($('editable-field[field-value="data.fullName"] input').getAttribute('value')).toEqual(n)
     })
@@ -35,17 +35,19 @@ describe('Test editing of user settings', function () {
     it('should change the job title', async function () {
         let d = new Date()
         let n = d.getTime().toString()
-        let x = new UserSettings()
-        await x.editJobTitle(n)
-        await browser.sleep(500)
+        let userSettingInstance = new UserSettings()
+        await userSettingInstance.editJobTitle(n)
+        await browser.sleep(300)
         await browser.refresh()
         await expect($('editable-field[field-value="data.jobTitle"] input').getAttribute('value')).toEqual(n)
     })
 
-    fit('should change time format', async function () {
-        // await expect($('.dropdown-toggle').getAttribute('value')).toEqual('23:07')
-        let x = new UserSettings()
-        await x.editTimeFormat()
+    it('should change time format', async function () {
+        let userSettingInstance = new UserSettings()
+        let oldFormat = userSettingInstance.checkTimeFormat()
+        await userSettingInstance.editTimeFormat()
+        let newFormat = userSettingInstance.checkTimeFormat()
+        await expect(oldFormat).not.toEqual(newFormat)
     })
 
 })
