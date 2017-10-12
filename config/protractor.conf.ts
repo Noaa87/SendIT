@@ -6,6 +6,14 @@ import { Config, browser } from 'protractor'
 let conf: Config = {
   // Connecting directly to ChromeDriverServer
   directConnect: true,
+  
+  capabilities: {
+    browserName: 'chrome',
+    chromeOptions: {
+      args: [ "--headless", "--disable-gpu", "--window-size=1280x1024" ]
+    }
+  },
+
   specs: [
     '../specs/**/*.spec.js',
     '../specs/*.spec.js'
