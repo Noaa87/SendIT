@@ -1,7 +1,7 @@
 # GreenLight - SendIT.gl
 
-
 -------
+[![Build Status](https://travis-ci.org/Noaa87/SendIT.svg?branch=master)](https://travis-ci.org/Noaa87/SendIT)
 
 Fundamentals are:
 - [TypeScript](https://www.typescriptlang.org/docs/tutorial.html) - as project language
