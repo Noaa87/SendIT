@@ -22,7 +22,7 @@ describe('Test editing of user settings', function () {
         await userSettings.editName(epochTime)
         await browser.sleep(300)
         await browser.refresh()
-        await expect(await $('editable-field[field-value="data.fullName"] input').getAttribute('value')).toEqual(n)
+        await expect(await $('editable-field[field-value="data.fullName"] input').getAttribute('value')).toEqual(epochTime)
     })
 
 
@@ -32,7 +32,7 @@ describe('Test editing of user settings', function () {
         await userSettings.editJobTitle(epochTime)
         await browser.sleep(300)
         await browser.refresh()
-        await expect(await $('editable-field[field-value="data.jobTitle"] input').getAttribute('value')).toEqual(n)
+        await expect(await $('editable-field[field-value="data.jobTitle"] input').getAttribute('value')).toEqual(epochTime)
     })
 
     it('should change time format', async function () {
