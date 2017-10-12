@@ -1,6 +1,6 @@
 import { browser, ExpectedConditions as EC, $, $$ } from 'protractor'
 import { LoginPage } from '../page_objects/login.page'
-import { userSettings } from '../page_objects/user.settings.page'
+import { UserSettings } from '../page_objects/user.settings.page'
 import { AppPage } from '../page_objects/app.page'
 
 declare let expect:any
@@ -24,7 +24,7 @@ describe('Test editing of user settings', function () {
     it('should change the name', async function () {
         let d = new Date()
         let n = d.getTime().toString()
-        let x = new userSettings()
+        let x = new UserSettings()
         await x.editName(n)
         await browser.sleep(500)
         await browser.refresh()
@@ -35,7 +35,7 @@ describe('Test editing of user settings', function () {
     it('should change the job title', async function () {
         let d = new Date()
         let n = d.getTime().toString()
-        let x = new userSettings()
+        let x = new UserSettings()
         await x.editJobTitle(n)
         await browser.sleep(500)
         await browser.refresh()
@@ -44,10 +44,8 @@ describe('Test editing of user settings', function () {
 
     fit('should change time format', async function () {
         // await expect($('.dropdown-toggle').getAttribute('value')).toEqual('23:07')
-        // let x = new userSettings()
-        // await x.editTimeFormat()
-        console.log($('.dropdown-toggle').getAttribute('value'))
-        
+        let x = new UserSettings()
+        await x.editTimeFormat()
     })
 
 })

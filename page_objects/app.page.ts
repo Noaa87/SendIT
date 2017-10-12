@@ -3,7 +3,8 @@ import { browser, $, $$, element, ExpectedConditions as EC } from 'protractor'
 export class AppPage {
     protected url: string = '/app/'
 
-    private userMenu = $('[ng-click="vm.loadCurrentUsage()"]')
+    // private userMenu = $('[ng-click="vm.loadCurrentUsage()"]')
+    private userMenu = $('#navbar-user-menu')
     private logOut = $('[ng-click="vm.logout()"]')
     private yourProfile = $('.dropdown-menu a[href*="user-settings"]')
 
