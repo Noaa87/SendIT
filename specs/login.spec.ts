@@ -1,7 +1,7 @@
 import { browser, ExpectedConditions as EC, $, $$ } from 'protractor'
 import { LoginPage } from '../page_objects/login.page'
 
-describe('Test SendIT web-app', function () {
+describe('Test login functionality', function () {
     const loginPage = new LoginPage()
 
     beforeEach(async () => {

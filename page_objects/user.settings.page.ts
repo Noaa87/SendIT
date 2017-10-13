@@ -1,4 +1,4 @@
-import { browser, $, $$, element, ExpectedConditions as EC } from 'protractor'
+import { browser, $, $$, element, ExpectedConditions as EC, Key } from 'protractor'
 
 export class UserSettings {
 
@@ -13,13 +13,13 @@ export class UserSettings {
     async editJobTitle(newJobTitle: string) {
         await this.jobTitle.clear()
         await this.jobTitle.sendKeys(newJobTitle)
-        await this.jobTitle.submit()
+        await this.jobTitle.sendKeys(Key.ENTER)
     }
 
     async editName(newName: string) {
         await this.name.clear()
         await this.name.sendKeys(newName)
-        await this.name.submit()
+        await this.jobTitle.sendKeys(Key.ENTER)
     }
 
 

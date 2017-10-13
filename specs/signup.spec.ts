@@ -4,7 +4,7 @@ import { TermsAndConditionsPage } from '../page_objects/terms.conditions.page'
 import { AppPage } from '../page_objects/app.page'
 
 
-describe('Test SendIT web-app', function () {
+describe('Test Signup functionality', function () {
     const signUpPage = new SignUpPage()
     beforeEach(async () => {
         await signUpPage.open()

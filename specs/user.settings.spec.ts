@@ -1,47 +1,46 @@
-import { browser, $, $$, element, ExpectedConditions as EC, Key} from 'protractor'
-
-export class UserSettings {
-
-    private name = $('editable-field[field-value="data.fullName"] input')
-    private jobTitle = $('editable-field[field-value="data.jobTitle"] input')
-    private timeFormat = $('#user-time-format')
-    private options = $$('ul.dropdown-menu a')
-
-    async editJobTitle(newJobTitle: string) {
-        await this.jobTitle.clear()
-        await this.jobTitle.sendKeys(newJobTitle)
-        await this.jobTitle.sendKeys(Key.ENTER)
-    }
-
-    async editName(newName: string) {
-        await this.name.clear()
-        await this.name.sendKeys(newName)
-        await this.name.sendKeys(Key.ENTER)
-    }
+import { browser, ExpectedConditions as EC, $, $$ } from 'protractor'
+import { LoginPage } from '../page_objects/login.page'
+import { UserSettings } from '../page_objects/user.settings.page'
+import { AppPage } from '../page_objects/app.page'
 
 
-    async switchTimeFormatTo(format: '24h' | '12h') {
-        await this.options.map(async (option) => {
-            const text = await option.getText()
-            if (text.includes(format)) {
-                await option.click()
-            }
+describe('Test editing of user settings', function () {
+    const userSettings = new UserSettings()
+    
+    beforeEach(async () => {
+        // new login for each test case
+        await new LoginPage().openAndLogin({
+            email: 'simonex@sharklasers.com',
+            password: 'sendIT'
         })
-    }
+        await new AppPage().openUserProfile()
+    })
 
-    async selectedTimeFormat(): Promise<string> {
-        return await this.timeFormat.$('span.value').getText()
-    }
-
-    async switchTimeFormat() {
-        await this.timeFormat.click()
-        const currentTimeFormat = await this.selectedTimeFormat()
-        if (currentTimeFormat.includes('AM') || currentTimeFormat.includes('PM')) {
-            await this.switchTimeFormatTo('24h')
-        } else {
-            await this.switchTimeFormatTo('12h')
-        }
-    }
+    it('should change the name', async function () {
+        const epochTime = new Date().getTime().toString()
+        
+        await userSettings.editName(epochTime)
+        await browser.sleep(300)
+        await browser.refresh()
+        await expect(await $('editable-field[field-value="data.fullName"] input').getAttribute('value')).toEqual(epochTime)
+    })
 
 
-}
+    it('should change the job title', async function () {
+        const epochTime = new Date().getTime().toString()
+        
+        await userSettings.editJobTitle(epochTime)
+        await browser.sleep(300)
+        await browser.refresh()
+        await expect(await $('editable-field[field-value="data.jobTitle"] input').getAttribute('value')).toEqual(epochTime)
+    })
+
+    it('should change time format', async function () {
+        
+        const oldFormat = await userSettings.selectedTimeFormat()
+        await userSettings.switchTimeFormat()
+        const newFormat = await userSettings.selectedTimeFormat()
+        await expect(oldFormat).not.toEqual(newFormat)
+    })
+
+})
