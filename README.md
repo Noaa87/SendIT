@@ -40,7 +40,6 @@ This is done by `.vscode/launch.json` and `.vscode/tasks.json`. I suggest to kee
 
 #### PageObjects and PageFragments (Components)
 - PageObjects are done using [ES6 classes](http://es6-features.org/#ClassDefinition)
-- PageFragments (Components) done using ES6 classes and [protractor-element-extend](https://github.com/Xotabu4/protractor-element-extend) package
 
 #### Additional matchers
 This project has additional jasmine matchers for jasmine `expect()` function - `.toAppear()` and `.toDisappear()`. To read more about additional matchers see [jasmine-protractor-matchers](https://github.com/Xotabu4/jasmine-protractor-matchers) repo. Unfortunately, this lib does not support TypeScript yet. You should cast your `expect()` function to `:any` type to avoid compilation errors.
